@@ -17,7 +17,19 @@ jobs:
       # Install Heroku CLI.
       - name: Install Heroku CLI
         run: curl https://cli-assets.heroku.com/install.sh | sh
+
+      # Add explicit login to Heroku Container Registry
+      - name: Login to Heroku Container Registry
+        run: |
+          echo "${{ secrets.HEROKU_API_KEY }}" | docker login --username=${{ secrets.HEROKU_EMAIL }} --password-stdin registry.heroku.com
       
+      # Verify Heroku app exists
+      - name: Verify Heroku app
+        run: |
+          heroku apps:info ${{ secrets.HEROKU_APP_NAME }} --json || heroku apps:create ${{ secrets.HEROKU_APP_NAME }}
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
 ### ⬇ IMPORTANT PART ⬇ ###
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name

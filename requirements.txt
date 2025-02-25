@@ -1,15 +1,6 @@
 Flask
-<<<<<<< HEAD
-sklearn
-pandas
-numpy
-matplotlib
-gunicorn
-
-=======
 scikit-learn
 pandas
 numpy
 matplotlib
 gunicorn
->>>>>>> ca2098cebe1573bd7a3f5ea9f07e6c98462405e3

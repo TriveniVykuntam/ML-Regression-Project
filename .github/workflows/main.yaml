@@ -14,10 +14,10 @@ jobs:
       # Check-out your repository.
       - name: Checkout
         uses: actions/checkout@v2
-      #Heroku CLI
+      # Install Heroku CLI.
       - name: Install Heroku CLI
-      run: curl https://cli-assets.heroku.com/install.sh | sh
-
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+      
 ### ⬇ IMPORTANT PART ⬇ ###
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
